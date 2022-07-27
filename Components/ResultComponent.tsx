@@ -81,11 +81,28 @@ function calculateBlossom(params : Props) : Return {
 
 export const ResultComponent : FC = () => {
     const params : Props = useRoute().params as Props
+    // const params : Props = {
+    //     nameArray : [ "Antrea","Chris","Iota","Aa"],
+    //     values : {
+    //         '0-1' : 1,
+    //         '0-2' : 1,
+    //         '0-3' : 1,
+    //         '1-0' : 1,
+    //         '1-2' : 1,
+    //         '1-3' : 1,
+    //         '2-0' : 1,
+    //         '2-1' : 1,
+    //         '2-3' : 1,
+    //         '3-0' : 1,
+    //         '3-1' : 1,
+    //         '3-2' : 1,
+    //     }
+    // }
     const nav = useNavigation()
     const teams = calculateBlossom(params)
     
     return (
-        <View style={[styles.container]}>
+        <View style={[styles.container,{justifyContent : "space-between"}]}>
             <ScrollView style = {tableStyles.component}>
                 <Text style={[styles.sectionTitle,tableStyles.text]}>Teams</Text>
                 <View style={styles.centerStyle}>
@@ -114,7 +131,7 @@ export const ResultComponent : FC = () => {
                     <View>
                         <Text style={[styles.sectionTitle,tableStyles.text]}>Team remaining</Text>
                         <Table borderStyle={{borderWidth:1}}>
-                        <Row  textStyle={tableStyles.text} style={tableStyles.head} data={teams.remaining} flexArr={[2,2]}/>
+                        <Row  textStyle={tableStyles.text} style={tableStyles.head} data={teams.remaining.map(e => params.nameArray[e])} flexArr={[2,2]}/>
                         </Table>
                     </View>
                 }
@@ -122,10 +139,10 @@ export const ResultComponent : FC = () => {
                     teams.lonePlayer &&
                     <View>
                         <Text style={[styles.sectionTitle,tableStyles.text]}>Remaining Player</Text>
-                        <Text style={[styles.sectionTitle,tableStyles.text]}>{teams.lonePlayer}</Text>
+                        <Text style={[styles.sectionTitle,tableStyles.text]}>{params.nameArray[teams.lonePlayer]}</Text>
                     </View>
                 }
-                <View style={styles.centerStyle}>
+                <View style={[styles.centerStyle,{marginTop : 10}]}>
                     <AwesomeButton  onPress={() => {nav.navigate('Home')}} width={100}>Home</AwesomeButton>
                 </View>
             </ScrollView>
@@ -134,9 +151,10 @@ export const ResultComponent : FC = () => {
 }
 
 const tableStyles = StyleSheet.create({
-    container : {width : '90%', padding : 16, paddingTop : 30},
+    container : {width : '90%', padding : 16, paddingTop : 10},
     children : { backgroundColor: 'yellow'},
     head: {  height: 40,  backgroundColor: '#f1f8ff'  },
     text : {textAlign : "center"},
     component : {flex : 1,padding : 10}
 })
+

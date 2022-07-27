@@ -86,5 +86,8 @@ const startStyles = StyleSheet.create({
         alignItems:"flex-start",
 
     },
+    error : {
+        color:"red"
+    }
     
 })

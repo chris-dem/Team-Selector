@@ -1,4 +1,4 @@
-import {StyleSheet   } from 'react-native';
+import {LogBox, StyleSheet   } from 'react-native';
 import {StartComponent} from "./Components/StartComponent"
 // import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-
+LogBox.ignoreLogs(['Invalid prop textStyle of type array supplied to Cell']);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'screenOptions={{
@@ -25,7 +25,7 @@ export default function App() {
           },
           headerTintColor: '#39FF14',
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontWeight: 'bold', 
           },
         }}>
         <Stack.Screen name = 'Home'   component={HomeComponent}   />

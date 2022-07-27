@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     centerStyle : {
-        alignItems: 'center',
+        alignItems    : 'center',
         justifyContent: 'center',
     },
     container :  {
@@ -83,6 +83,6 @@ export default StyleSheet.create({
         flexDirection : "row",
         justifyContent : "space-between",
         alignItems:"stretch",
-        marginBottom : 10,
+        marginVertical : 10,
     }
 })
