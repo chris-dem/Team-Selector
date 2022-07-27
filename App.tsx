@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {HomeComponent} from "./Components/HomeComponent"
 import { RateComponent } from './Components/RateComponent';
 import { ResultComponent } from './Components/ResultComponent';
+import { AboutComponent } from './Components/AboutComponent';
 const Stack = createNativeStackNavigator();
 
 
@@ -20,14 +21,15 @@ export default function App() {
       <Stack.Navigator initialRouteName='Home'screenOptions={{
           title : "Team Selector",
           headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: '#7d12ff',
           },
-          headerTintColor: '#fff',
+          headerTintColor: '#39FF14',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
         }}>
         <Stack.Screen name = 'Home'   component={HomeComponent}   />
+        {/* <Stack.Screen name = 'About'   component={AboutComponent}   /> */}
         <Stack.Screen name = 'Start'  component={StartComponent}  />
         <Stack.Screen name = 'Rate'   component={RateComponent}  />
         <Stack.Screen name = 'Result' component={ResultComponent} />

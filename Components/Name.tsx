@@ -4,13 +4,15 @@ import styles from '../styles';
 
 interface Props {
     name : string
+    indx : number,
+    rem  : (indx : number) => void
 }
 
 export const Name : FC<Props> = (props : Props) => {
     return (
         <View style={styles.item }>
-            <Text>{props.name ? props.name : "This is a task"}</Text>
-            <TouchableOpacity style={styles.ex}></TouchableOpacity>
+            <Text>{props.name}</Text>
+            <TouchableOpacity style={styles.ex} onPress={() => props.rem(props.indx)}></TouchableOpacity>
         </View>
     )
 }
